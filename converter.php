@@ -68,7 +68,7 @@ foreach ( $lists as $name => $list ) {
 		}
 
 		// Skip Adguard HTML filtering syntax.
-		if ( false !== strpos( $filter, '$$' ) ) {
+		if ( false !== strpos( $filter, '$$' ) || false !== strpos( $filter, '$@$' ) ) {
 			continue;
 		}
 
@@ -81,7 +81,7 @@ foreach ( $lists as $name => $list ) {
 
 		// Replace filter syntax with HOSTS syntax.
 		// @todo Perhaps skip $third-party, $image and $popup?
-		$filter = str_replace( array( '||', '^third-party', '^', '$third-party', ',third-party', '$image', ',image', ',important', '$script', ',script', '$object', ',object', '$popup', ',popup', '$empty', '$object-subrequest', '$document', '$subdocument', ',subdocument', '$ping', '$important', '$badfilter', ',badfilter', '$websocket', '$cookie', '$other' ), '', $filter );
+		$filter = str_replace( array( '||', '^third-party', '^', '$third-party', ',third-party', '$all', ',all', '$image', ',image', ',important', '$script', ',script', '$object', ',object', '$popup', ',popup', '$empty', '$object-subrequest', '$document', '$subdocument', ',subdocument', '$ping', '$important', '$badfilter', ',badfilter', '$websocket', '$cookie', '$other' ), '', $filter );
 
 		/*
 		 * Workarounds. Groan.
